@@ -1,0 +1,104 @@
+import { BreadcrumbsSeparator } from "@/components/breadcrumbs-separatr";
+import { RouterLink } from "@/components/router-link";
+import { adminPaths } from "@/paths";
+import {
+  Box,
+  Breadcrumbs,
+  Container,
+  Link,
+  Stack,
+  Typography,
+} from "@mui/material";
+import React from "react";
+import EditLocation, {
+  BranchType,
+} from "../../components/locations/edit-location";
+import { getSession } from "@/utils/get-session";
+import apiRequest from "@/utils/api-request";
+import { Metadata, ResolvingMetadata } from "next/types";
+
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.id;
+
+  const session = await getSession();
+  const data = await apiRequest<{ message?: BranchType; error?: string }>(
+    `/api/locations/${id}`,
+    {
+      token: session,
+    }
+  );
+
+  if (data?.message) {
+    return {
+      title: `${data.message.name}`,
+    };
+  } else {
+    return {
+      title: `Edit Location`,
+    };
+  }
+}
+
+async function Page({ params }: { params: { id: string } }) {
+  const id = params.id;
+  const session = await getSession();
+  const data = await apiRequest<{ message?: BranchType; error?: string }>(
+    `/api/locations/${id}`,
+    {
+      token: session,
+      tag: "fetchBranch",
+    }
+  );
+
+  if (data?.error) {
+    throw new Error("Something Went wrong. Please retry");
+  }
+
+  const branch = data?.message;
+
+  if (branch) {
+    return (
+      <>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            py: 8,
+          }}
+        >
+          <Container maxWidth="lg">
+            <Stack spacing={3}>
+              <Stack spacing={1}>
+                <Typography variant="h4">Edit Location</Typography>
+                <Breadcrumbs separator={<BreadcrumbsSeparator />}>
+                  <Link
+                    color="text.primary"
+                    component={RouterLink}
+                    href={adminPaths.dashboard.location}
+                    variant="subtitle2"
+                  >
+                    Location
+                  </Link>
+                  <Typography color="text.secondary" variant="subtitle2">
+                    Edit
+                  </Typography>
+                </Breadcrumbs>
+              </Stack>
+              <EditLocation branch={branch!} />
+            </Stack>
+          </Container>
+        </Box>
+      </>
+    );
+  }
+}
+
+export default Page;
