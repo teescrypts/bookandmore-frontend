@@ -49,7 +49,10 @@ export async function generateMetadata(
   return {
     title: name,
     openGraph: {
-      images: ["/some-specific-page-image.jpg", ...previousImages],
+      images: [
+        "https://bookandmore.live/assets/imgs/impact-logo.png",
+        ...previousImages,
+      ],
     },
   };
 }

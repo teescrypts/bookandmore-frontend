@@ -44,12 +44,16 @@ export async function generateMetadata(
   } else {
     name = response.message!.title;
   }
+  
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
     title: name,
     openGraph: {
-      images: ["/some-specific-page-image.jpg", ...previousImages],
+      images: [
+        "https://bookandmore.live/assets/imgs/impact-logo.png",
+        ...previousImages,
+      ],
     },
   };
 }

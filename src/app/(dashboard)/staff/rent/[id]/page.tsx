@@ -14,6 +14,44 @@ import { getSession } from "@/utils/get-session";
 import apiRequest from "@/utils/api-request";
 import { Subscription } from "../page";
 import { staffPaths } from "@/paths";
+import { ResolvingMetadata, Metadata } from "next";
+
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = params.id;
+
+  const session = await getSession();
+  const response = await apiRequest<Response>(`/api/blogs/${id}`, {
+    token: session,
+    tag: "fetchBlog",
+  });
+
+  let name;
+  if (response?.error) {
+    name = "Error";
+  } else {
+    name = response.message!.name;
+  }
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: name,
+    openGraph: {
+      images: [
+        "https://bookandmore.live/assets/imgs/impact-logo.png",
+        ...previousImages,
+      ],
+    },
+  };
+}
 
 interface Response {
   error?: string;

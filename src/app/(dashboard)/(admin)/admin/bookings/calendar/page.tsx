@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: "Book and More",
     images: [
       {
-        url: "https://bookandmore.live/assets/", // Must be an absolute URL
+        url: "https://bookandmore.live/assets/imgs/impact-logo.png", // Must be an absolute URL
         width: 800,
         height: 600,
       },
@@ -44,7 +44,7 @@ async function page() {
     return <NoActiveBranch message={response.message} />;
   }
 
-  const timeZone = response.message!
+  const timeZone = response.message!;
 
   return (
     <Box

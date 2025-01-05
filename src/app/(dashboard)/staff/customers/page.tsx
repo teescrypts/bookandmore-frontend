@@ -3,6 +3,27 @@ import React from "react";
 import CustomerListTable from "../components/customers/customer-list/customer-list-table";
 import { getSession } from "@/utils/get-session";
 import apiRequest from "@/utils/api-request";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Customers",
+  description: "Manage Customers activities",
+  openGraph: {
+    title: "Book and more",
+    description: "The All in one website for small business owners",
+    url: "https://bookandmore.live",
+    siteName: "Book and More",
+    images: [
+      {
+        url: "https://bookandmore.live/assets/imgs/impact-logo.png", // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
 
 export interface CustomerInfo {
   id: string;

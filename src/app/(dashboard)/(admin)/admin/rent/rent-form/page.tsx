@@ -14,6 +14,27 @@ import { adminPaths } from "@/paths";
 import apiRequest from "@/utils/api-request";
 import { getSession } from "@/utils/get-session";
 import { Subscription } from "../page";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Shop Rent forms",
+  description: "Maanage Shop rent forms",
+  openGraph: {
+    title: "Book and more",
+    description: "The All in one website for small business owners",
+    url: "https://bookandmore.live",
+    siteName: "Book and More",
+    images: [
+      {
+        url: "https://bookandmore.live/assets/imgs/impact-logo.png", // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
 
 async function Page() {
   const session = await getSession();

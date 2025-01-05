@@ -49,7 +49,7 @@ export async function generateMetadata(
     token: session,
   });
 
-  let name;
+  let name = "Error";
   if (response?.message) {
     name = response.message.service.name;
   }
@@ -58,9 +58,12 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${name}`,
+    title: name,
     openGraph: {
-      images: ["/some-specific-page-image.jpg", ...previousImages],
+      images: [
+        "https://bookandmore.live/assets/imgs/impact-logo.png",
+        ...previousImages,
+      ],
     },
   };
 }

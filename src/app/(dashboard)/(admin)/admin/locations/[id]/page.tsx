@@ -37,12 +37,28 @@ export async function generateMetadata(
   );
 
   if (data?.message) {
+    const previousImages = (await parent).openGraph?.images || [];
+
     return {
-      title: `${data.message.name}`,
+      title: data.message.name,
+      openGraph: {
+        images: [
+          "https://bookandmore.live/assets/imgs/impact-logo.png",
+          ...previousImages,
+        ],
+      },
     };
   } else {
+    const previousImages = (await parent).openGraph?.images || [];
+
     return {
-      title: `Edit Location`,
+      title: "Error",
+      openGraph: {
+        images: [
+          "https://bookandmore.live/assets/imgs/impact-logo.png",
+          ...previousImages,
+        ],
+      },
     };
   }
 }

@@ -6,16 +6,16 @@ import Link from "next/link";
 import Add from "@/icons/untitled-ui/duocolor/add";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Set up your services and start taking appointment",
+  title: "Manage services",
+  description: "Manage the services you offers",
   openGraph: {
     title: "Book and more",
-    description: "The All in one website for small business owners",
+    description: "The All in one website for Barber brands and shops",
     url: "https://bookandmore.live",
     siteName: "Book and More",
     images: [
       {
-        url: "https://bookandmore.live/assets/", // Must be an absolute URL
+        url: "https://bookandmore.live/assets/imgs/impact-logo.png", // Must be an absolute URL
         width: 800,
         height: 600,
       },
@@ -35,7 +35,11 @@ async function Page() {
       }}
     >
       <Container maxWidth={"lg"}>
-        <Stack justifyContent={"space-between"} direction={"row"} sx={{ mb: 6 }}>
+        <Stack
+          justifyContent={"space-between"}
+          direction={"row"}
+          sx={{ mb: 6 }}
+        >
           <Typography variant="h4">Services</Typography>
           <Stack>
             <Link href={"services/add"}>

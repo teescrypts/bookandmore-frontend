@@ -18,15 +18,15 @@ import NoActiveBranch from "@/components/no-active-branch";
 
 export const metadata: Metadata = {
   title: "Blogs",
-  description: "Maanage Blogs",
+  description: "Manage Blogs",
   openGraph: {
     title: "Book and more",
-    description: "The All in one website for small business owners",
+    description: "The All in one website for Barber brands and shops",
     url: "https://bookandmore.live",
     siteName: "Book and More",
     images: [
       {
-        url: "https://bookandmore.live/assets/", // Must be an absolute URL
+        url: "https://bookandmore.live/assets/imgs/impact-logo.png", // Must be an absolute URL
         width: 800,
         height: 600,
       },

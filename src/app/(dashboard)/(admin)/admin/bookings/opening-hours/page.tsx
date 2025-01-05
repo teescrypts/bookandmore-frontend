@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: "Book and more",
     images: [
       {
-        url: "https://bookandmore.live/assets/", // Must be an absolute URL
+        url: "https://bookandmore.live/assets/imgs/impact-logo.png", // Must be an absolute URL
         width: 800,
         height: 600,
       },
@@ -31,7 +31,7 @@ export interface TimeSlot {
 }
 
 export interface OpeningHoursType {
-  id: string; 
+  id: string;
   owner: string;
   monday: TimeSlot[];
   tuesday: TimeSlot[];
@@ -40,7 +40,7 @@ export interface OpeningHoursType {
   friday: TimeSlot[];
   saturday: TimeSlot[];
   sunday: TimeSlot[];
-  availability: "available" | "unavailable"; 
+  availability: "available" | "unavailable";
 }
 
 interface Response {

@@ -16,16 +16,16 @@ import { getSession } from "@/utils/get-session";
 import apiRequest from "@/utils/api-request";
 
 export const metadata: Metadata = {
-  title: "Add Services",
-  description: "Set up your services and start taking appointment",
+  title: "Add service",
+  description: "Add a new service",
   openGraph: {
     title: "Book and more",
-    description: "The All in one website for small business owners",
+    description: "The All in one website for Barber brands and shops",
     url: "https://bookandmore.live",
     siteName: "Book and More",
     images: [
       {
-        url: "https://bookandmore.live/assets/", // Must be an absolute URL
+        url: "https://bookandmore.live/assets/imgs/impact-logo.png", // Must be an absolute URL
         width: 800,
         height: 600,
       },
