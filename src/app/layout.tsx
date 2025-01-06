@@ -1,3 +1,4 @@
+import NoSsr from "@/components/no-ssr";
 import CustomTheme from "../components/custom-theme";
 import { Metadata } from "next";
 
@@ -34,7 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ margin: 0 }}>
-        <main>{children}</main>
+        <NoSsr>
+          <main>{children}</main>
+        </NoSsr>
       </body>
     </html>
   );

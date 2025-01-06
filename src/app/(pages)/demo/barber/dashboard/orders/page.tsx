@@ -1,5 +1,6 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
-import OrdersPage from "../component/orders/orders-details";
 import { revalidateTag } from "next/cache";
 import { getSession } from "@/utils/get-session";
 import apiRequest from "@/utils/api-request";

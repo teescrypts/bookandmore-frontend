@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import apiRequest from "@/utils/api-request";
 import { getSession } from "@/utils/get-session";
 import { Metadata } from "next/types";

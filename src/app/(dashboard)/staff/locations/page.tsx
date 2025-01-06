@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { getSession } from "@/utils/get-session";

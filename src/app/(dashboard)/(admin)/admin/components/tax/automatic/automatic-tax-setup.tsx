@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Stack, Divider } from "@mui/material";
 import React from "react";
 import TaxSettings from "./tax-settings";

@@ -33,7 +33,6 @@ interface Response {
 }
 
 async function Page() {
-  revalidateTag("fetchLocations")
   const response = await apiRequest<Response>("/api/bookings/fetch/locations", {
     tag: "fetchLocations",
   });

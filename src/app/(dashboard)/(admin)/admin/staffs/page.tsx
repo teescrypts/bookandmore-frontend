@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Box, Button, Chip, Container, Stack, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";

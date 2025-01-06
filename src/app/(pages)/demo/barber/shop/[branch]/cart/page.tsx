@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { ValidCouponType } from "@/app/actions/action-types";
 import apiRequest from "@/utils/api-request";
 import { getSession } from "@/utils/get-session";

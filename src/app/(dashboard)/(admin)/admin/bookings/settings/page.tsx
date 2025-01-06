@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import AppointmentBookingSettings from "../components/booking-settings/settings";
 import { Box, Container, Stack, Typography } from "@mui/material";

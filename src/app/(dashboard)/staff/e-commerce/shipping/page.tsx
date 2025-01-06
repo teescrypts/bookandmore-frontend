@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import ShippingSettings from "../components/shipping/shipping";
 import { Box, Container, Stack, Typography } from "@mui/material";

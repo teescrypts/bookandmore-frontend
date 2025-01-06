@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import BlogPage from "../components/blog/blog-list";
 import {

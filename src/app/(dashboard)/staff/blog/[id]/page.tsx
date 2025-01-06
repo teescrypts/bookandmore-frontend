@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import UpdateBlog from "../../components/blog/update-blog";
 import apiRequest from "@/utils/api-request";

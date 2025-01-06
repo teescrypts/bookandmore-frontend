@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { alpha } from "@mui/system/colorManipulator";
-import { Theme, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { ApexOptions } from "apexcharts";
 
 const ApexChart = dynamic(() => import("react-apexcharts"), {

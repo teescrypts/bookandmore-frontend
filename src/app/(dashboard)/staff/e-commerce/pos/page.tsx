@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import PointOfSale from "../components/pos/point-of-sale";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";

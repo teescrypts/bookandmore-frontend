@@ -6,6 +6,7 @@ import TopLoader from "@/components/top-loader";
 import { AuthProvider } from "@/app/authentication/frontend/auth-context";
 import apiRequest from "@/utils/api-request";
 import { revalidateTag } from "next/cache";
+import NoSsr from "@/components/no-ssr";
 
 export interface CustomerBranches {
   id: string;

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import LocationManager from "../components/locations/location-manager";
 import { Box, Container, Stack, Typography } from "@mui/material";

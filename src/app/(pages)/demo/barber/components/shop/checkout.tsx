@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic'
+
 import React, { useCallback } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {

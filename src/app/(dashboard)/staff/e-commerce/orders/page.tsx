@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import Orders from "../components/orders/orders";
 import { Metadata } from "next";

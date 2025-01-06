@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import ReusableTabs from "@/components/tab";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";

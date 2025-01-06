@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import CalendarUi from "../components/calendar/calendar-ui";
 import { Box, Container } from "@mui/material";

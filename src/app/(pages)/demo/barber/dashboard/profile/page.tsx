@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import AccountManager from "../component/profile/account-manager";
 import apiRequest from "@/utils/api-request";

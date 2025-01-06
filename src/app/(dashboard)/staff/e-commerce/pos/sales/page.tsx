@@ -1,4 +1,5 @@
-import NoActiveBranch from "@/components/no-active-branch";
+export const dynamic = 'force-dynamic'
+
 import apiRequest from "@/utils/api-request";
 import { getSession } from "@/utils/get-session";
 import {

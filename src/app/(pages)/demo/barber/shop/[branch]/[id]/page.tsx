@@ -2,7 +2,6 @@ import React from "react";
 import ProductPage from "../../../components/shop/product-page";
 import apiRequest from "@/utils/api-request";
 import { ValidCouponType } from "@/app/actions/action-types";
-import { revalidateTag } from "next/cache";
 
 export interface CustomerProduct {
   _id: string;

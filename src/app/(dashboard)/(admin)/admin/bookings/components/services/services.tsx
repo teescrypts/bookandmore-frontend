@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import apiRequest from "@/utils/api-request";
 import { getSession } from "@/utils/get-session";

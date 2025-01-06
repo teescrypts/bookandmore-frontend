@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Metadata } from "next";
 import React from "react";
 import OpeningHours from "../components/opening-hours/opening-hours";

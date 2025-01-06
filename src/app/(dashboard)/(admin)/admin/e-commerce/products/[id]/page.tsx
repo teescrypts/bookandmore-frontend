@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { BreadcrumbsSeparator } from "@/components/breadcrumbs-separatr";
 import { RouterLink } from "@/components/router-link";
 import {
@@ -15,6 +17,7 @@ import { adminPaths } from "@/paths";
 import apiRequest from "@/utils/api-request";
 import { getSession } from "@/utils/get-session";
 import { Product } from "../page";
+import NoSsr from "@/components/no-ssr";
 
 type Props = {
   params: { id: string };
@@ -70,35 +73,37 @@ async function page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
-        <Container maxWidth="lg">
-          <Stack spacing={3}>
-            <Stack spacing={1}>
-              <Typography variant="h4">Edit product</Typography>
-              <Breadcrumbs separator={<BreadcrumbsSeparator />}>
-                <Link
-                  color="text.primary"
-                  component={RouterLink}
-                  href={adminPaths.dashboard.ecommerce.products}
-                  variant="subtitle2"
-                >
-                  Product
-                </Link>
-                <Typography color="text.secondary" variant="subtitle2">
-                  Edit
-                </Typography>
-              </Breadcrumbs>
+      <NoSsr>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            py: 8,
+          }}
+        >
+          <Container maxWidth="lg">
+            <Stack spacing={3}>
+              <Stack spacing={1}>
+                <Typography variant="h4">Edit product</Typography>
+                <Breadcrumbs separator={<BreadcrumbsSeparator />}>
+                  <Link
+                    color="text.primary"
+                    component={RouterLink}
+                    href={adminPaths.dashboard.ecommerce.products}
+                    variant="subtitle2"
+                  >
+                    Product
+                  </Link>
+                  <Typography color="text.secondary" variant="subtitle2">
+                    Edit
+                  </Typography>
+                </Breadcrumbs>
+              </Stack>
+              <EditProduct product={product} />
             </Stack>
-            <EditProduct product={product} />
-          </Stack>
-        </Container>
-      </Box>
+          </Container>
+        </Box>
+      </NoSsr>
     </>
   );
 }

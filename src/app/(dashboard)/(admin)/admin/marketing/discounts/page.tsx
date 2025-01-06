@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import DiscountSettings from "../../components/marketing/discounts/discount-settings";
 import { Box, Container, Stack, Typography } from "@mui/material";

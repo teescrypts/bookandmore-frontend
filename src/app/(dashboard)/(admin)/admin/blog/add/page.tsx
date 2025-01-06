@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import AddBlog from "../../components/blog/add-blog";
 import { BreadcrumbsSeparator } from "@/components/breadcrumbs-separatr";

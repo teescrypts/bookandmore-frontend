@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import React from "react";
 import AddServiceForm from "../../components/services/add-service";
 import {

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import CustomerListTable from "../components/customers/customer-list/customer-list-table";

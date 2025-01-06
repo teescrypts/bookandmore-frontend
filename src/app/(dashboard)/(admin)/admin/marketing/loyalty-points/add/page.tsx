@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Stack, Typography, Box, Container } from "@mui/material";
 import React from "react";
 import LoyaltyPointSetup from "../../../components/marketing/loyalty-points/loyalty-point-setup";
