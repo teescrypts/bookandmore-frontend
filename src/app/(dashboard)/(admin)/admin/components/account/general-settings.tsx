@@ -50,6 +50,8 @@ function GeneralSettings({ user }: { user: UserType }) {
 
   const { getUserData } = useUserData();
 
+  console.log("currently on----------------");
+
   const handleAvatarChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
 
@@ -57,6 +59,7 @@ function GeneralSettings({ user }: { user: UserType }) {
       formData.append(e.target.name, e.target.files[0]);
       const response = await uploadAvatar(formData);
       if (response?.error) setMessage(response.error);
+
       setFile(e.target.files[0]);
       notify("Picture Uploaded Successfully");
       getUserData();
@@ -70,50 +73,6 @@ function GeneralSettings({ user }: { user: UserType }) {
       setMessage("Something went wrong. Please try again");
     }
   }, [state]);
-
-  // const [stripeConnectInstance, setStripeConnectInstance] = useState<any>();
-  // const [loadingStripe, setLoadingStripe] = useState(false);
-  // const [stripeMsg, setStripeMsg] = useState("");
-
-  // const handleManageFinance = async () => {
-  //   setLoadingStripe(true);
-  //   const fetchClientSecret = async () => {
-  //     const response = await fetchConnectedAccountClientSecret();
-
-  //     if (response?.error) {
-  //       const { error } = response;
-  //       setStripeMsg(error);
-  //       setLoadingStripe(false);
-  //       return undefined;
-  //     } else {
-  //       if (response?.client_secret === "Not a Commission staff") {
-  //         setStripeMsg(response.client_secret);
-  //         setLoadingStripe(false);
-  //         return undefined;
-  //       }
-
-  //       const { client_secret: clientSecret } = response;
-  //       return clientSecret!;
-  //     }
-  //   };
-
-  //   if (await fetchClientSecret()) {
-  //     const loadConnect = loadConnectAndInitialize({
-  //       publishableKey:
-  //         "pk_test_51Pf9jVA9UXNeDBeWlIu4aYKO1FP8VOxzBs0ah0Q6Dt7lCHwxCzR8gj2ODaFIteFleKNz2dMbCjDoBxEFBPwRlJIl00Rk8ORztX",
-  //       fetchClientSecret: fetchClientSecret as () => Promise<string>,
-  //       appearance: {
-  //         overlays: "dialog",
-  //         variables: {
-  //           colorPrimary: theme.palette.primary.main,
-  //         },
-  //       },
-  //     });
-
-  //     setStripeConnectInstance(loadConnect);
-  //     setLoadingStripe(false);
-  //   }
-  // };
 
   return (
     <Stack spacing={4}>
