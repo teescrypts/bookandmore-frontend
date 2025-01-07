@@ -2,6 +2,7 @@ import React from "react";
 import BookingPage from "../components/booking/booking-page";
 import apiRequest from "@/utils/api-request";
 import { revalidateTag } from "next/cache";
+import EmptyState from "@/components/empty-state";
 
 export interface BranchType {
   _id: string;
@@ -37,7 +38,7 @@ async function Page() {
     tag: "fetchLocations",
   });
 
-  if (response?.error) throw new Error(response.error);
+  if (response?.error) return <EmptyState message={response.error} />;
 
   const locations = response.message!;
 

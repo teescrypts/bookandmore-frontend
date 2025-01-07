@@ -1,6 +1,6 @@
 export const API_BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "bookandmore.live"
+    ? "http://24.144.125.44:3002"
     : "http://localhost:3002";
 
 export const CLIENT_BASE_URL =

@@ -1,6 +1,7 @@
 import apiRequest from "@/utils/api-request";
 import React from "react";
 import BlogList from "../components/blog/blog-list";
+import EmptyState from "@/components/empty-state";
 
 export interface CustomerBlogType {
   _id: string;
@@ -27,7 +28,7 @@ async function Page() {
     tag: "fetchBlogs",
   });
 
-  if (response?.error) throw new Error(response.error);
+  if (response?.error) return <EmptyState message={response.error} />;
 
   const blogs = response.message!;
 

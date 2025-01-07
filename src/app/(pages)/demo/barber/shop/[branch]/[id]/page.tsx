@@ -2,6 +2,7 @@ import React from "react";
 import ProductPage from "../../../components/shop/product-page";
 import apiRequest from "@/utils/api-request";
 import { ValidCouponType } from "@/app/actions/action-types";
+import EmptyState from "@/components/empty-state";
 
 export interface CustomerProduct {
   _id: string;
@@ -44,7 +45,7 @@ async function Page({ params }: { params: { id: string; branch: string } }) {
     tag: "CustomerfetchProduct",
   });
 
-  if (response?.error) throw new Error(response.error);
+  if (response?.error) return <EmptyState message={response.error} />;
 
   const product = response.message!.product;
   const validCoupons = response.message!.validCoupons;

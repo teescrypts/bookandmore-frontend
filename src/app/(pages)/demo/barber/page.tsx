@@ -7,6 +7,7 @@ import BarberTopSellingProducts from "./components/home/barber-top-selling-produ
 import PromoPopUp from "./components/promo-pop-up";
 import apiRequest from "@/utils/api-request";
 import { revalidateTag } from "next/cache";
+import EmptyState from "@/components/empty-state";
 
 export interface HomePageProductType {
   _id: string; // MongoDB's ObjectId as a string
@@ -82,7 +83,7 @@ async function Page() {
     }
   );
 
-  if (response?.error) throw new Error(response.error);
+  if (response?.error) return <EmptyState message={response.error} />;
 
   const products = response.message!.products;
   const blogs = response.message!.blogs;

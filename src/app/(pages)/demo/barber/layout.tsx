@@ -25,9 +25,13 @@ async function Layout({ children }: { children: ReactNode }) {
     tag: "fetchCustomerBranches",
   });
 
-  if (response?.error) throw new Error(response.error);
+  let branches;
 
-  const branches = response.message!;
+  if (response?.error) {
+    branches = response.error;
+  } else {
+    branches = response.message;
+  }
 
   return (
     <CustomTheme colorPreset="green">

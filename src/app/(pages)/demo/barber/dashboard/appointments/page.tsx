@@ -20,6 +20,7 @@ async function Page() {
   });
 
   if (response?.error) throw new Error(response.error);
+  
   const appointments = response.message!;
 
   return <AppointmentPage appointments={appointments} />;

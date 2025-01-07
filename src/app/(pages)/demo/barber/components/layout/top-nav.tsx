@@ -53,7 +53,11 @@ const notifications = [
   "Earn point you can convert to discount code anytime you spend",
 ];
 
-const BarberTopNav = ({ branches }: { branches: CustomerBranches[] }) => {
+const BarberTopNav = ({
+  branches,
+}: {
+  branches: CustomerBranches[] | string | undefined;
+}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [anchorElAvatar, setAnchorElAvatar] = useState<null | HTMLElement>(
     null
@@ -131,7 +135,14 @@ const BarberTopNav = ({ branches }: { branches: CustomerBranches[] }) => {
                           },
                         }}
                       >
-                        {branches.length > 0 ? (
+                        {branches && typeof branches === "string" && (
+                          <Typography variant="subtitle2" textAlign={"center"}>
+                            {branches}
+                          </Typography>
+                        )}
+                        {branches &&
+                        typeof branches !== "string" &&
+                        branches.length > 0 ? (
                           branches.map((branch) => (
                             <MenuItem
                               key={branch.id}
@@ -317,8 +328,15 @@ const BarberTopNav = ({ branches }: { branches: CustomerBranches[] }) => {
                       {shopOpen ? <ExpandLess /> : <ExpandMore />}
                     </ListItem>
                     <Collapse in={shopOpen} timeout="auto" unmountOnExit>
+                      {branches && typeof branches === "string" && (
+                        <Typography variant="subtitle2" textAlign={"center"}>
+                          {branches}
+                        </Typography>
+                      )}
                       <List component="div" disablePadding>
-                        {branches.length > 0 ? (
+                        {branches &&
+                        typeof branches !== "string" &&
+                        branches.length > 0 ? (
                           branches.map((branch) => (
                             <ListItem
                               key={branch.id}

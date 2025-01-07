@@ -1,10 +1,11 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import { ValidCouponType } from "@/app/actions/action-types";
 import apiRequest from "@/utils/api-request";
 import { getSession } from "@/utils/get-session";
 import React from "react";
 import CartPage from "../../../components/shop/cart";
+import EmptyState from "@/components/empty-state";
 
 export interface CartItem {
   _id: string;
@@ -46,7 +47,7 @@ async function page({ params }: { params: { branch: string } }) {
 
   if (response?.error) {
     if (response.error !== "Please authenticate.")
-      throw new Error(response.error);
+      if (response?.error) return <EmptyState message={response.error} />;
   }
 
   const validCoupons = response.messaage?.validCoupons || [];
