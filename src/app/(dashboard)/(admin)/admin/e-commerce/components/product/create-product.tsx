@@ -89,6 +89,7 @@ export default function CreateProduct({
       const formData = new FormData();
       formData.append("fileName", newFiles[i].name);
       formData.append("image", newFiles[i]);
+
       const result = await addProductImage(formData);
 
       if (result?.error) {

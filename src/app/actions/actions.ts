@@ -178,7 +178,7 @@ export async function uploadAvatar(formData: FormData) {
   );
 
   if (response.error) {
-    return { error: "something went wrong. Please retry" };
+    return { error: response.error };
   } else {
     revalidateTag("fetchUser");
     revalidateTag("fetchCustomer");
@@ -282,6 +282,8 @@ export async function addLocation(prevState: {}, formData: FormData) {
     return { error: "error" };
   } else {
     revalidateTag("fetchLocations");
+    revalidateTag("fetchUserData");
+    revalidateTag("fetchCustomerBranches");
     return { success: "success" };
   }
 }
@@ -330,7 +332,7 @@ export async function updateBranch(prevState: {}, formData: FormData) {
       },
       postalCode: formData.get("postalCode"),
     },
-    timeZone: formData.get("postalCode"),
+    timeZone: formData.get("timeZone"),
   };
 
   const id = formData.get("id");
@@ -346,8 +348,11 @@ export async function updateBranch(prevState: {}, formData: FormData) {
   );
 
   if (response.error) {
-    return { error: "error" };
+    return { error: response.error };
   } else {
+    revalidateTag("fetchLocations");
+    revalidateTag("fetchUserData");
+    revalidateTag("fetchCustomerBranches");
     return { success: "success" };
   }
 }
@@ -378,6 +383,8 @@ export async function updateTaxSettings(
   if (response?.error) {
     return { error: response.error };
   } else {
+    revalidateTag("fetchDashboardTax");
+    revalidateTag("fetchHomepageData");
     return { success: "success" };
   }
 }
@@ -1556,6 +1563,7 @@ export async function addProduct(
     revalidateTag("fetchShopData");
     revalidateTag("fetchHomepageData");
     revalidateTag("CustomerfetchProduct");
+    revalidateTag("fetchCustomerBranches");
     return { success: response.message };
   }
 }

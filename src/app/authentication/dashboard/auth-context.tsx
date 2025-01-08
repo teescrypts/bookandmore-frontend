@@ -33,8 +33,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const result = await fetchUserData();
 
-      console.log(result);
-
       if (result === "session expired") {
         setRedirecting(true);
         router.replace(
@@ -54,7 +52,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUserType(userResponse.type);
       }
     } catch (error) {
-      console.error("Error fetching user data:", error);
       setRedirecting(true);
       router.replace(`/demo/login?reason=${error}`);
     } finally {

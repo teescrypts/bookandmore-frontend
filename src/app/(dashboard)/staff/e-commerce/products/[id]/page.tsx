@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import { BreadcrumbsSeparator } from "@/components/breadcrumbs-separatr";
 import { RouterLink } from "@/components/router-link";

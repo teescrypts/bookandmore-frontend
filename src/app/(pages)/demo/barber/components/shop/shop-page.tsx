@@ -317,7 +317,6 @@ const ShopPage: React.FC<ShopPageProps> = ({
     sizeBased: boolean,
     instock: number
   ) => {
-    console.log("running cart");
     const result = await addToCart(
       instock,
       branch,
@@ -426,9 +425,7 @@ const ShopPage: React.FC<ShopPageProps> = ({
                         key={img.imageId}
                         component="img"
                         height="450"
-                        image={
-                          `${API_BASE_URL}/${img?.url}` || "/placeholder.jpg"
-                        }
+                        image={img?.url || "/placeholder.jpg"}
                         alt={product.name}
                       />
                     ))}

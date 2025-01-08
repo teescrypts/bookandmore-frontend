@@ -153,7 +153,7 @@ function FileDropzone({
                     }}
                   >
                     <img
-                      src={`${API_BASE_URL}/${file.url}`}
+                      src={file.url}
                       alt={file.fileName}
                       style={{
                         width: "100%",

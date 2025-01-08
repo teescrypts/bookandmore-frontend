@@ -34,7 +34,7 @@ async function Page() {
   const userDataRaw = response.message!;
   const user: ClientData = {
     ...userDataRaw,
-    avatar: `${API_BASE_URL}/users/${userDataRaw._id}/avatar`,
+    avatar: `${API_BASE_URL}/api/users/${userDataRaw._id}/avatar`,
   };
 
   return <AccountManager user={user} />;

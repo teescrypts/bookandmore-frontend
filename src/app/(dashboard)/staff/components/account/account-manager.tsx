@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
 import GeneralSettings from "./general-settings";

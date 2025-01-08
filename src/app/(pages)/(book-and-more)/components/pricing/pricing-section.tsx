@@ -95,7 +95,7 @@ const PricingSection = () => {
                     {pkg.title}
                   </Typography>
                   <Typography variant="h6" align="center" sx={{ mb: 1 }}>
-                    One-time Installation Fee: {pkg.installationFee}
+                    One-time Installation Fee: {pkg.installationFee} (50% Discount)
                   </Typography>
                   <Typography variant="h6" align="center" sx={{ mb: 2 }}>
                     Hosting Fee: {pkg.monthlyFee}

@@ -99,7 +99,7 @@ const Settings: React.FC<SettingsType> = ({ settings }) => {
         </CardActions>
       </Card>
 
-      <Card>
+      {/* <Card>
         <CardHeader title="Registrations" />
         <CardContent>
           {registrations.map((reg) => {
@@ -145,7 +145,7 @@ const Settings: React.FC<SettingsType> = ({ settings }) => {
 
       <ModalBox open={open} onClose={handleClose}>
         <TaxRegistrations />
-      </ModalBox>
+      </ModalBox> */}
     </Box>
   );
 };

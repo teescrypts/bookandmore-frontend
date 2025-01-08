@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import React from "react";
 import DiscountSettings from "../../components/marketing/discounts/discount-settings";
@@ -26,7 +26,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
 
 export interface AddedProductType {
   _id: string;

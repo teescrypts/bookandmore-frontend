@@ -5,8 +5,6 @@ import BarberTopNav from "./components/layout/top-nav";
 import TopLoader from "@/components/top-loader";
 import { AuthProvider } from "@/app/authentication/frontend/auth-context";
 import apiRequest from "@/utils/api-request";
-import { revalidateTag } from "next/cache";
-import NoSsr from "@/components/no-ssr";
 
 export interface CustomerBranches {
   id: string;
@@ -20,7 +18,6 @@ interface Response {
 }
 
 async function Layout({ children }: { children: ReactNode }) {
-  // revalidateTag("fetchCustomerBranches")
   const response = await apiRequest<Response>("/api/shop/fetch/branches", {
     tag: "fetchCustomerBranches",
   });

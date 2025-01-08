@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import React from "react";
 import AddBlog from "../../components/blog/add-blog";
@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import { getSession } from "@/utils/get-session";
 import apiRequest from "@/utils/api-request";
+import { Metadata } from "next";
 import { staffPaths } from "@/paths";
-import { Metadata } from "next/types";
 
 export const metadata: Metadata = {
   title: "Publish blog",
@@ -51,7 +51,7 @@ interface Response {
 
 async function Page() {
   const session = await getSession();
-  const response = await apiRequest<Response>("/blogs/image", {
+  const response = await apiRequest<Response>("/api/blogs/image/draft", {
     token: session,
     tag: "fetchBlogImageDraft",
   });

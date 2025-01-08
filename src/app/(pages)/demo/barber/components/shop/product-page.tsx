@@ -18,11 +18,8 @@ import {
   Link,
   Badge,
 } from "@mui/material";
-import Star from "@/icons/untitled-ui/duocolor/star";
-import StarBorder from "@/icons/untitled-ui/duocolor/start-border";
 import ShoppingCart01 from "@/icons/untitled-ui/duocolor/shopping-cart-01";
 import { CustomerProduct } from "../../shop/[branch]/[id]/page";
-import { API_BASE_URL } from "@/paths";
 import { ValidCouponType } from "@/app/actions/action-types";
 import { BreadcrumbsSeparator } from "@/components/breadcrumbs-separatr";
 import { RouterLink } from "@/components/router-link";
@@ -37,11 +34,11 @@ import notify from "@/utils/toast";
 import { useRouter } from "next/navigation";
 import { localStorageExtCart } from "./cart";
 
-const reviews = [
-  { username: "John Combs", comment: "I love this product", rating: 4 },
-  { username: "Kahl King", comment: "It's good", rating: 2 },
-  { username: "Enderson Burray", comment: "I love this product", rating: 3 },
-];
+// const reviews = [
+//   { username: "John Combs", comment: "I love this product", rating: 4 },
+//   { username: "Kahl King", comment: "It's good", rating: 2 },
+//   { username: "Enderson Burray", comment: "I love this product", rating: 3 },
+// ];
 
 function ProductPage({
   branch,
@@ -53,7 +50,7 @@ function ProductPage({
   validCoupons: ValidCouponType[];
 }) {
   const [selectedImage, setSelectedImage] = useState<string>(
-    `${API_BASE_URL}/${product.images[0]?.url}`
+    product.images[0]?.url
   );
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
@@ -135,7 +132,7 @@ function ProductPage({
   };
 
   const handleImageClick = (image: string) => {
-    setSelectedImage(`${API_BASE_URL}/${image}`);
+    setSelectedImage(image);
   };
 
   const handleSizeSelection = (size: string) => {
@@ -306,7 +303,7 @@ function ProductPage({
                     onClick={() => handleImageClick(image.url)}
                   >
                     <img
-                      src={`${API_BASE_URL}/${image.url}`}
+                      src={image.url}
                       alt={`Thumbnail`}
                       style={{
                         width: 50,
@@ -332,13 +329,13 @@ function ProductPage({
               <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                 Category: {product.category.name}
               </Typography>
-              <Rating
+              {/* <Rating
                 value={3}
                 readOnly
                 precision={0.5}
                 icon={<Star />}
                 emptyIcon={<StarBorder />}
-              />
+              /> */}
               <Typography variant="body2" color="text.secondary">
                 {product.description || "No description available"}
               </Typography>
@@ -507,11 +504,11 @@ function ProductPage({
             </Box>
           </Grid2>
 
-          <Grid2 size={{ xs: 12, md: 12 }}>
-            {/* Divider */}
+          {/* <Grid2 size={{ xs: 12, md: 12 }}>
+
             <Divider sx={{ my: 4 }} />
 
-            {/* Reviews */}
+       
             <Box>
               <Typography variant="h5" gutterBottom>
                 Reviews
@@ -529,7 +526,8 @@ function ProductPage({
                 </Box>
               ))}
             </Box>
-          </Grid2>
+          </Grid2> */}
+          
         </Grid2>
       </Box>
 

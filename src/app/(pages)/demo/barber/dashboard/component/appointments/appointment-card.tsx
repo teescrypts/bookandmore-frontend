@@ -383,7 +383,7 @@ const AppointmentCard: React.FC<{ appointment: CustomerAppointmentType }> = ({
               </Button>
             )}
 
-            {/* {actions.payable && ( */}
+            {actions.payable && (
               <Button
                 variant="contained"
                 color="success"
@@ -392,8 +392,7 @@ const AppointmentCard: React.FC<{ appointment: CustomerAppointmentType }> = ({
               >
                 Pay Now
               </Button>
-
-            {/* // )} */}
+            )}
 
             {["completed", "cancelled"].includes(appointment.status) && (
               <Chip label={appointment.status} color="default" />

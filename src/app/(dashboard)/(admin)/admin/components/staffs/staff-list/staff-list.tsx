@@ -8,6 +8,7 @@ import { Stack, Card } from "@mui/material";
 import StaffListSearch from "./staff-list-search";
 import StaffListTable from "./staff-list-table";
 import { StaffInfoType } from "../../../staffs/page";
+import EmptyState from "@/components/empty-state";
 
 export interface Filters {
   query?: string;
@@ -131,6 +132,10 @@ function StaffList({ staffs }: { staffs: StaffInfoType[] }) {
   const customersStore = useStaffStore(customersSearch.state, staffs);
   const customersIds = useStaffId(customersStore.staffs);
   const customersSelection = useSelection(customersIds);
+
+  if (staffs.length === 0) {
+    return <EmptyState message="No staff members have been onboarded yet." />;
+  }
 
   return (
     <Stack spacing={4}>

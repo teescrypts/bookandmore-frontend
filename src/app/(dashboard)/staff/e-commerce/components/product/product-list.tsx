@@ -11,7 +11,6 @@ import {
   Button,
   SvgIcon,
   Card,
-  CircularProgress,
 } from "@mui/material";
 import { ProductListSearch } from "./product-list-search";
 import { ProductListTable } from "./product-list-table";
@@ -153,7 +152,7 @@ function ProductList({ products }: { products: Product[] }) {
             </Stack>
             {products.length === 0 ? (
               <EmptyState
-                message="No product found"
+                message="You have not added any product"
                 actionLabel="Add product"
                 onActionClick={() =>
                   router.push(staffPaths.dashboard.ecommerce.add)

@@ -47,7 +47,7 @@ function AccountButton({
               height: 32,
               width: 32,
             }}
-            src={`${API_BASE_URL}/users/${user.id}/avatar`}
+            src={`${API_BASE_URL}/api/users/${user.id}/avatar`}
           >
             <SvgIcon>
               <User01 />

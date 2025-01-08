@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import {
   Box,
@@ -16,6 +16,7 @@ import { Metadata } from "next";
 import { adminPaths } from "@/paths";
 import { getSession } from "@/utils/get-session";
 import apiRequest from "@/utils/api-request";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Add New Product",
@@ -49,13 +50,14 @@ interface Response {
 }
 
 async function Page() {
+  revalidateTag("fetchDraftImages");
   const session = await getSession();
-  const response = await apiRequest<Response>("/products/image", {
+  const response = await apiRequest<Response>("/api/products/image/draft", {
     token: session,
     tag: "fetchDraftImages",
   });
 
-  if (response?.error) throw new Error("Something went wrong, Please refresh");
+  if (response?.error) throw new Error(response.error);
 
   const draftImages = response.message!;
 

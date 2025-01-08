@@ -1,11 +1,11 @@
 export const API_BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "bookandmore.live"
+    ? "http://localhost:3002"
     : "http://localhost:3002";
 
 export const CLIENT_BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "bookandmore.live"
+    ? "https://bookandmore.live"
     : "http://localhost:3000";
 
 export interface PathType {

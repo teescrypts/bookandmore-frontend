@@ -26,8 +26,8 @@ async function AutomaticTaxSetup() {
     <Stack sx={{ my: 4 }}>
       <Stack spacing={6}>
         <TaxSettings branches={branches} />
-        <Divider />
-        <TaxRegistrations />
+        {/* <Divider />
+        <TaxRegistrations /> */}
       </Stack>
     </Stack>
   );

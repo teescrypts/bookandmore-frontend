@@ -47,6 +47,7 @@ type Location = {
   name: string;
   address: Address;
   opened: boolean;
+  timeZone: string;
   active: boolean;
 };
 

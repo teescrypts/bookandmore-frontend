@@ -19,6 +19,7 @@ import {
   OutlinedInput,
   Select,
   SelectChangeEvent,
+  CircularProgress,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -68,12 +69,14 @@ function CommissionForm({ services }: { services: ServiceForFormType[] }) {
     initialState
   );
   const [message, setMessage] = useState("");
+  const [redirecting, setRedirecting] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     if (state) {
       if (state?.error) setMessage(state.error);
       if (state?.success) {
+        setRedirecting(true);
         router.push(
           `${adminPaths.dashboard.staff.pendingForms}?from={{staff-form}}`
         );
@@ -204,6 +207,12 @@ function CommissionForm({ services }: { services: ServiceForFormType[] }) {
         <Typography color="error" variant="subtitle2">
           {message}
         </Typography>
+
+        {redirecting && (
+          <Stack justifyContent={"center"} direction={"row"}>
+            <CircularProgress />
+          </Stack>
+        )}
 
         <Stack direction={"row"} justifyContent={"flex-end"}>
           <SubmitButton title="Add Form" isFullWidth={false} />

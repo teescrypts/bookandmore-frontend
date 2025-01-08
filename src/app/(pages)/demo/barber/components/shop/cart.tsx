@@ -352,7 +352,7 @@ const CartPage: React.FC<CartPageProps> = ({
                     <Stack direction="row" spacing={2}>
                       {/* Product Image */}
                       <img
-                        src={`${API_BASE_URL}/${item.product.images[0]?.url}`}
+                        src={item.product.images[0]?.url}
                         alt={item.product.name}
                         style={{
                           width: 100,

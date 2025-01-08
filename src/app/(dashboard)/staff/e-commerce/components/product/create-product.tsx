@@ -76,8 +76,8 @@ export default function CreateProduct({
     sizeType: string | undefined;
     quantity: string | undefined;
   }>({
-    sizeType: undefined,
-    quantity: undefined,
+    sizeType: "",
+    quantity: "",
   });
 
   const [imageMsg, setImageMsg] = useState("");
@@ -89,6 +89,7 @@ export default function CreateProduct({
       const formData = new FormData();
       formData.append("fileName", newFiles[i].name);
       formData.append("image", newFiles[i]);
+
       const result = await addProductImage(formData);
 
       if (result?.error) {
@@ -290,9 +291,10 @@ export default function CreateProduct({
               <Grid2 container spacing={2}>
                 <Grid2 size={{ xs: 12 }}>
                   {sizes.length > 0 ? (
-                    sizes.map((size) => {
+                    sizes.map((size, sizeindex) => {
                       return (
                         <Stack
+                          key={sizeindex}
                           direction={"row"}
                           justifyContent={"space-between"}
                           sx={{ maxWidth: { md: "30%" }, px: { xs: 2 }, mb: 2 }}

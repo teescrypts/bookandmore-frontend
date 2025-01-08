@@ -265,7 +265,7 @@ export default function ModernPointOfSale({
         : undefined,
       quantity: selectedQuantity,
       price: selectedProduct.price,
-      url: `${API_BASE_URL}/${selectedProduct.images[0].url}`,
+      url: selectedProduct.images[0].url,
       stripeProductId: selectedProduct.stripeData.productId,
     };
 
@@ -337,7 +337,7 @@ export default function ModernPointOfSale({
                         >
                           <CardMedia
                             component="img"
-                            image={`${API_BASE_URL}/${product.images[0]?.url}`}
+                            image={product.images[0]?.url}
                             alt={product.name}
                             sx={{
                               width: "100%",
@@ -477,23 +477,23 @@ export default function ModernPointOfSale({
                 isOptionEqualToValue={(option, value) =>
                   option._id === value._id
                 }
-                noOptionsText={
-                  <List>
-                    <ListItem
-                      component="button"
-                      onClick={() =>
-                        setSelectedCustomer({
-                          _id: "string",
-                          fname: "string",
-                          lname: "string",
-                          email: "string",
-                        })
-                      }
-                    >
-                      <ListItemText primary={"Add Guest"} />
-                    </ListItem>
-                  </List>
-                }
+                // noOptionsText={
+                //   <List>
+                //     <ListItem
+                //       component="button"
+                //       onClick={() =>
+                //         setSelectedCustomer({
+                //           _id: "string",
+                //           fname: "string",
+                //           lname: "string",
+                //           email: "string",
+                //         })
+                //       }
+                //     >
+                //       <ListItemText primary={"Add Guest"} />
+                //     </ListItem>
+                //   </List>
+                // }
               />
               {selectedCustomer ? (
                 <Typography variant="body1" sx={{ mb: 2 }}>

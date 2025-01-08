@@ -21,6 +21,7 @@ import { format } from "date-fns";
 import { deleteBlog } from "@/app/actions/actions";
 import { useState } from "react";
 import notify from "@/utils/toast";
+import truncateWords from "@/utils/truncated-words";
 import { staffPaths } from "@/paths";
 
 function formatCreatedAt(createdAt: Date): string {
@@ -73,7 +74,7 @@ const BlogCard: React.FC<BlogType> = ({
           By {author}
         </Typography>
         <Typography variant="body2" color="textSecondary">
-          {shortDescription}
+          {truncateWords(shortDescription, 20)}
         </Typography>
 
         {/* Edit/Delete buttons with spacing */}

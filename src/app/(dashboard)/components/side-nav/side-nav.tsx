@@ -6,6 +6,7 @@ import { Box, Drawer, Stack, SvgIconProps, useTheme } from "@mui/material";
 import { usePathname } from "next/navigation";
 import React, { ReactElement, ReactNode, useMemo } from "react";
 import SideNavSection from "./sidenav-section";
+import ImpactLogo from "@/components/impact-logo";
 
 const SIDE_NAV_WIDTH = 280;
 
@@ -203,7 +204,7 @@ function SideNav({
                 width: 40,
               }}
             >
-              <Logo />
+              <ImpactLogo />
             </Box>
             <TenantSwitch sx={{ flexGrown: 1 }} />
           </Stack>

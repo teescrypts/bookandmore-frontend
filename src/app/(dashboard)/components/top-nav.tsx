@@ -1,7 +1,6 @@
 import { useUserData } from "@/app/authentication/dashboard/auth-context";
 import AccountButton from "@/components/account-button/account-button";
 import ActiveLocation from "@/components/active-location";
-import NotificationsButton from "@/components/notifications/notifications-button";
 import Menu from "@/icons/untitled-ui/duocolor/menu";
 import { Box, IconButton, Stack, SvgIcon, Theme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";

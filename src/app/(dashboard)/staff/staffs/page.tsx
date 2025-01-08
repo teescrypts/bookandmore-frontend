@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import { Box, Button, Chip, Container, Stack, Typography } from "@mui/material";
 import Link from "next/link";
@@ -44,7 +44,7 @@ export interface StaffInfoType {
 
 interface Response {
   error?: string;
-  message?: StaffInfoType[];
+  message?: { staffInfo: StaffInfoType[]; pendingForms: number };
 }
 
 async function Page() {
@@ -56,7 +56,8 @@ async function Page() {
 
   if (response?.error) throw new Error(response.error);
 
-  const staffInfo = response.message!;
+  const staffInfo = response.message!.staffInfo;
+  const pendingForms = response.message!.pendingForms;
 
   return (
     <>
@@ -82,7 +83,9 @@ async function Page() {
                   <Button
                     size="small"
                     variant="outlined"
-                    endIcon={<Chip label="4" size="small" color="primary" />}
+                    endIcon={
+                      <Chip label={pendingForms} size="small" color="primary" />
+                    }
                   >
                     Pending Forms
                   </Button>

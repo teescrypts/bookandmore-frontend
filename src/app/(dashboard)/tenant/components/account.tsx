@@ -70,6 +70,8 @@ const AccountPage: React.FC<PropType> = ({ user }) => {
 
   const { userData } = useUserData();
 
+  console.log(userData)
+
   useEffect(() => {
     if (userData && isTenant(userData)) {
       const rentStatus = userData!.rentStatus;

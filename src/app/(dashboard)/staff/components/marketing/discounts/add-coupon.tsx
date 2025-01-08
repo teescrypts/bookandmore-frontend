@@ -15,7 +15,11 @@ import {
   Divider,
   InputLabel,
 } from "@mui/material";
-import { ProductType, ServiceType } from "../../../marketing/discounts/page";
+import {
+  CouponType,
+  ProductType,
+  ServiceType,
+} from "../../../marketing/discounts/page";
 import { useFormState } from "react-dom";
 import { addCoupon } from "@/app/actions/actions";
 import { SubmitButton } from "@/components/submit-button";
@@ -24,15 +28,17 @@ import notify from "@/utils/toast";
 const initialState: { error?: string; success?: string } | null = null;
 
 const AddCoupon = ({
+  coupons,
   products,
   services,
   onClose,
 }: {
+  coupons: CouponType[];
   products: ProductType[];
   services: ServiceType[];
   onClose: () => void;
 }) => {
-  const [valueType, setValueType] = useState<string | undefined>();
+  const [valueType, setValueType] = useState<string | undefined>("");
   const [addedProducts, setAddedProducts] = useState<
     { productId: string; stripeId: string }[]
   >([]);
@@ -71,7 +77,13 @@ const AddCoupon = ({
   };
 
   const [message, setMessage] = useState("");
-  const addCouponPro = addCoupon.bind(null, addedProducts, addedServices);
+  const addCouponPro = addCoupon.bind(
+    null,
+    addedProducts,
+    addedServices,
+    coupons
+  );
+
   const [state, formAction] = useFormState(addCouponPro, initialState);
 
   useEffect(() => {

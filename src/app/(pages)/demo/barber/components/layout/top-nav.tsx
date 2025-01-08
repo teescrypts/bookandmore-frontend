@@ -103,6 +103,7 @@ const BarberTopNav = ({
               variant="h5"
               component="a"
               href="/demo/barber"
+              color="primary"
               sx={{ flexGrow: 1, textDecoration: "none", fontWeight: "bold" }}
             >
               BarberDemo
@@ -217,7 +218,7 @@ const BarberTopNav = ({
                   <IconButton onClick={handleMenuOpenAvatar} sx={{ p: 0 }}>
                     <Avatar
                       src={
-                        `${API_BASE_URL}/users/${customerData?._id}/avatar` ||
+                        `${API_BASE_URL}/api/users/${customerData?._id}/avatar` ||
                         "/assets/avatars/avatar-anika-visser.png"
                       }
                       alt={customerData?.name ? customerData.name : ""}

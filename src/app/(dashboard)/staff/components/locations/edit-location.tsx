@@ -38,6 +38,7 @@ export interface BranchType {
   _id: string;
   name: string;
   address: Address;
+  timeZone: string;
 }
 
 const initialState: { error?: string; success?: string } = {};
@@ -75,7 +76,7 @@ function EditLocation({ branch }: { branch: BranchType }) {
   const [message, setMessage] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    if (state?.error) setMessage("Something went wrong. Please try again");
+    if (state?.error) setMessage(state.error);
     if (state?.success) notify("Branch Updated");
   }, [state]);
 
@@ -114,6 +115,16 @@ function EditLocation({ branch }: { branch: BranchType }) {
                 defaultValue={branch.address.line2 || ""}
                 name="line2"
                 label="Address Line 2"
+                fullWidth
+              />
+            </Grid2>
+            <Grid2 size={{ xs: 12 }}>
+              <TextField
+                variant="outlined"
+                name="timeZone"
+                label="Time zone"
+                defaultValue={branch.timeZone || ""}
+                helperText="Kindly search for IANA time zone identifier for your city"
                 fullWidth
               />
             </Grid2>

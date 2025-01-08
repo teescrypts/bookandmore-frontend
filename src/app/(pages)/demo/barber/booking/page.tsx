@@ -1,7 +1,6 @@
 import React from "react";
 import BookingPage from "../components/booking/booking-page";
 import apiRequest from "@/utils/api-request";
-import { revalidateTag } from "next/cache";
 import EmptyState from "@/components/empty-state";
 
 export interface BranchType {

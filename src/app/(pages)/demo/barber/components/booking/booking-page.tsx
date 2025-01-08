@@ -125,7 +125,7 @@ const BookingPage = ({ locations }: { locations: BranchType[] }) => {
   };
 
   const fetchingServices = useCallback(async () => {
-    if (!services && selectedLocation) {
+    if (selectedLocation) {
       setFetchingData(true);
       const result = await fetchServices(selectedLocation);
 
@@ -133,7 +133,7 @@ const BookingPage = ({ locations }: { locations: BranchType[] }) => {
       if (result?.success) setServices(result.success);
       setFetchingData(false);
     }
-  }, [activeStep]);
+  }, [activeStep, selectedLocation]);
 
   const fetchSlots = useCallback(async () => {
     if (selectedStaff && services) {
@@ -367,6 +367,10 @@ const BookingPage = ({ locations }: { locations: BranchType[] }) => {
   // -------------------------------------
 
   useEffect(() => {
+    if (activeStep === 0) {
+      setServices(undefined);
+    }
+
     if (activeStep === 1) {
       fetchingServices();
     }
@@ -596,7 +600,7 @@ const BookingPage = ({ locations }: { locations: BranchType[] }) => {
                           >
                             <CardContent>
                               <Avatar
-                                src={`${API_BASE_URL}/users/${staff._id}/avatar`}
+                                src={`${API_BASE_URL}/api/users/${staff._id}/avatar`}
                                 alt={`${staff.fname} ${staff.lname}`}
                                 sx={{
                                   width: 80,

@@ -48,7 +48,7 @@ const BarberTopSellingProducts: React.FC<PropType> = ({ products }) => (
                 }}
               >
                 <img
-                  src={`${API_BASE_URL}/${product.images[0].url}`}
+                  src={product.images[0].url}
                   alt={product.name}
                   style={{
                     width: "100%",

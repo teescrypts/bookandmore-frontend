@@ -6,7 +6,7 @@ import BarberTrendingBlogs from "./components/home/barber-trending-blogs";
 import BarberTopSellingProducts from "./components/home/barber-top-selling-product";
 import PromoPopUp from "./components/promo-pop-up";
 import apiRequest from "@/utils/api-request";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import EmptyState from "@/components/empty-state";
 
 export interface HomePageProductType {

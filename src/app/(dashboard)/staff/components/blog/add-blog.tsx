@@ -33,20 +33,24 @@ function AddBlog({ draftImg }: { draftImg: BlogDraftImageType | string }) {
     url: string;
     imageId: string;
     fileName: string;
-  } | null>(
-    typeof draftImg === "string"
-      ? null
-      : {
-          url: `${API_BASE_URL}/${draftImg.url}?name=${draftImg.fileName}`,
-          imageId: draftImg.imageId,
-          fileName: draftImg.fileName,
-        }
-  );
+  } | null>(null);
 
   const [content, setContent] = useState("");
 
   const [imgMsg, setImgMsg] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (typeof draftImg !== "string") {
+      setCover({
+        url: `${draftImg.url}?name=${draftImg.fileName}`,
+        imageId: draftImg.imageId,
+        fileName: draftImg.fileName,
+      });
+    } else {
+      setCover(null);
+    }
+  }, [draftImg]);
 
   const handleCoverDrop = useCallback(async ([file]: File[]) => {
     setLoading(true);
@@ -61,7 +65,7 @@ function AddBlog({ draftImg }: { draftImg: BlogDraftImageType | string }) {
     } else {
       const image = result.success;
       setCover({
-        url: `${API_BASE_URL}/blogs/${image!.imageId}/image?name=${
+        url: `${API_BASE_URL}/api/blogs/${image!.imageId}/image?name=${
           image!.fileName
         }`,
         imageId: image!.imageId,

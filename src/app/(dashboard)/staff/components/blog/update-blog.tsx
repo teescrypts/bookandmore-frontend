@@ -51,7 +51,7 @@ function UpdateBlog({ blog }: { blog: BlogType }) {
     } else {
       const image = result.success;
       setCover({
-        url: `${API_BASE_URL}/blogs/${image!.imageId}/image?name=${
+        url: `${API_BASE_URL}/api/blogs/${image!.imageId}/image?name=${
           image!.fileName
         }`,
         imageId: image!.imageId,
@@ -108,6 +108,7 @@ function UpdateBlog({ blog }: { blog: BlogType }) {
                     fullWidth
                     label="Aurthor"
                   />
+
                   <TextField
                     name="estReadTime"
                     type="number"
@@ -175,18 +176,11 @@ function UpdateBlog({ blog }: { blog: BlogType }) {
               <Grid2 size={{ xs: 12, md: 8 }}>
                 <QuillEditor
                   value={content}
-                  onChange={(value: string) => {
-                    setContent(value);
-                  }}
+                  onChange={(value: string) => setContent(value)}
                   placeholder="Write something"
                   sx={{ height: 330 }}
                 />
-                <input
-                  value={content}
-                  onChange={() => {}}
-                  hidden
-                  name="content"
-                />
+                <input defaultValue={content} hidden name="content" />
               </Grid2>
             </Grid2>
           </CardContent>

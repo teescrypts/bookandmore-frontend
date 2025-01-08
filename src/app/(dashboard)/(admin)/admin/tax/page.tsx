@@ -66,6 +66,7 @@ async function Page() {
   const session = await getSession();
   const data = await apiRequest<FetchResponse>("/api/taxes", {
     token: session,
+    tag: "fetchDashboardTax"
   });
 
   if (data.error) {

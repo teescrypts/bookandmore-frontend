@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import { BreadcrumbsSeparator } from "@/components/breadcrumbs-separatr";
 import { RouterLink } from "@/components/router-link";
@@ -73,37 +73,35 @@ async function page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <NoSsr>
-        <Box
-          component="main"
-          sx={{
-            flexGrow: 1,
-            py: 8,
-          }}
-        >
-          <Container maxWidth="lg">
-            <Stack spacing={3}>
-              <Stack spacing={1}>
-                <Typography variant="h4">Edit product</Typography>
-                <Breadcrumbs separator={<BreadcrumbsSeparator />}>
-                  <Link
-                    color="text.primary"
-                    component={RouterLink}
-                    href={adminPaths.dashboard.ecommerce.products}
-                    variant="subtitle2"
-                  >
-                    Product
-                  </Link>
-                  <Typography color="text.secondary" variant="subtitle2">
-                    Edit
-                  </Typography>
-                </Breadcrumbs>
-              </Stack>
-              <EditProduct product={product} />
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          py: 8,
+        }}
+      >
+        <Container maxWidth="lg">
+          <Stack spacing={3}>
+            <Stack spacing={1}>
+              <Typography variant="h4">Edit product</Typography>
+              <Breadcrumbs separator={<BreadcrumbsSeparator />}>
+                <Link
+                  color="text.primary"
+                  component={RouterLink}
+                  href={adminPaths.dashboard.ecommerce.products}
+                  variant="subtitle2"
+                >
+                  Product
+                </Link>
+                <Typography color="text.secondary" variant="subtitle2">
+                  Edit
+                </Typography>
+              </Breadcrumbs>
             </Stack>
-          </Container>
-        </Box>
-      </NoSsr>
+            <EditProduct product={product} />
+          </Stack>
+        </Container>
+      </Box>
     </>
   );
 }

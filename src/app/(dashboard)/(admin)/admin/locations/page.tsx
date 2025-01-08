@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import React from "react";
 import LocationManager from "../components/locations/location-manager";
@@ -49,6 +49,7 @@ interface MessageType {
   _id: string;
   name: string;
   address: Address;
+  timeZone: string;
   opened: boolean;
   active: boolean;
 }

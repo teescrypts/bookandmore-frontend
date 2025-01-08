@@ -40,7 +40,7 @@ const AddCoupon = ({
   services: ServiceType[];
   onClose: () => void;
 }) => {
-  const [valueType, setValueType] = useState<string | undefined>();
+  const [valueType, setValueType] = useState<string | undefined>("");
   const [addedProducts, setAddedProducts] = useState<
     { productId: string; stripeId: string }[]
   >([]);

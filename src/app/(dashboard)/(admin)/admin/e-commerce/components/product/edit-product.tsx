@@ -34,6 +34,7 @@ import {
 } from "@/app/actions/actions";
 import notify from "@/utils/toast";
 import { useFormState } from "react-dom";
+import { API_BASE_URL } from "@/paths";
 
 interface FileType extends File {
   path?: string;
@@ -50,12 +51,16 @@ export default function EditProduct({ product }: { product: Product }) {
   const [selectedName, setSelectedName] = useState<string>("");
   const [updatedImages, setUpdatedImages] = useState<
     { url: string; fileName: string; imageId: string }[]
-  >(product.images);
+  >([]);
 
   const handleCategoryChange = (event: SelectChangeEvent<string>) => {
     const selectedId = event.target.value;
     setSelectedCategory(selectedId);
   };
+
+  useEffect(() => {
+    setUpdatedImages(product.images);
+  }, [product]);
 
   useEffect(() => {
     if (selectedCategory) {
@@ -159,7 +164,7 @@ export default function EditProduct({ product }: { product: Product }) {
 
       const newDraft = result.success!;
       const newImg = {
-        url: `products/${newDraft.imageId}/image`,
+        url: `${API_BASE_URL}/api/products/${newDraft.imageId}/image`,
         fileName: newDraft.fileName,
         imageId: newDraft.imageId,
       };
@@ -169,23 +174,22 @@ export default function EditProduct({ product }: { product: Product }) {
     setImgLoading(false);
   }, []);
 
-  const handleFileRemove = useCallback(async (id: string) => {
-    if (product.images.length === 1) {
-      alert("There must be atleast one image for each product");
-      return;
-    }
+  const handleFileRemove = useCallback(
+    async (id: string) => {
+      if (updatedImages.length === 1) {
+        alert("There must be atleast one image for each product");
+        return;
+      }
 
-    const result = await deleteProductImage(id, product._id);
+      const result = await deleteProductImage(id, product._id);
 
-    if (result?.error) setImageMsg(result.error);
-    if (result?.success) {
-      setUpdatedImages((prev) => {
-        const newUpdates = prev.filter((img) => img.imageId !== id);
-        return newUpdates;
-      });
-      notify(result.success);
-    }
-  }, []);
+      if (result?.error) setImageMsg(result.error);
+      if (result?.success) {
+        notify(result.success);
+      }
+    },
+    [updatedImages]
+  );
 
   const addImagesAndSize = updateProduct.bind(null, sizes, updatedImages);
   const [state, formAction] = useFormState(addImagesAndSize, initialState);
@@ -337,9 +341,10 @@ export default function EditProduct({ product }: { product: Product }) {
               <Grid2 container spacing={2}>
                 <Grid2 size={{ xs: 12 }}>
                   {sizes.length > 0 ? (
-                    sizes.map((size) => {
+                    sizes.map((size, sizeIndex) => {
                       return (
                         <Stack
+                          key={sizeIndex}
                           direction={"row"}
                           justifyContent={"space-between"}
                           sx={{ maxWidth: { md: "30%" }, px: { xs: 2 }, mb: 2 }}
@@ -429,7 +434,7 @@ export default function EditProduct({ product }: { product: Product }) {
               <FileDropzone
                 accept={{ "image/*": [] }}
                 caption="(SVG, JPG, or PNG. Ensure product is well centeered in the photo)"
-                files={product.images}
+                files={updatedImages}
                 onDrop={handleFilesDrop}
                 onRemove={handleFileRemove}
                 isEdit={true}

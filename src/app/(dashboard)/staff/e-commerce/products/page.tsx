@@ -1,4 +1,4 @@
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 import React from "react";
 import ProductList from "../components/product/product-list";
@@ -75,7 +75,7 @@ async function Page() {
   if (response?.error) throw new Error(response.error);
   const products = response.message!;
 
-  return <ProductList products={products} />;
+  return <ProductList products={products as Product[]} />;
 }
 
 export default Page;

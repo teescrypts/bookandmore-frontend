@@ -46,7 +46,7 @@ export async function generateMetadata(
   } else {
     name = response.message!.title;
   }
-
+  
   const previousImages = (await parent).openGraph?.images || [];
 
   return {

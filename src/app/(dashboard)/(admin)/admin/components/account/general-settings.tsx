@@ -50,15 +50,16 @@ function GeneralSettings({ user }: { user: UserType }) {
 
   const { getUserData } = useUserData();
 
-  console.log("currently on----------------");
-
   const handleAvatarChange = async (e: ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
 
     if (e.target.files) {
       formData.append(e.target.name, e.target.files[0]);
       const response = await uploadAvatar(formData);
-      if (response?.error) setMessage(response.error);
+      if (response?.error) {
+        setMessage(response.error);
+        return;
+      }
 
       setFile(e.target.files[0]);
       notify("Picture Uploaded Successfully");
@@ -73,6 +74,8 @@ function GeneralSettings({ user }: { user: UserType }) {
       setMessage("Something went wrong. Please try again");
     }
   }, [state]);
+
+  console.log("current env:", process.env.NODE_ENV);
 
   return (
     <Stack spacing={4}>
@@ -113,7 +116,7 @@ function GeneralSettings({ user }: { user: UserType }) {
                         src={
                           file
                             ? URL.createObjectURL(file)
-                            : `${API_BASE_URL}/users/${user._id}/avatar`
+                            : `${API_BASE_URL}/api/users/${user._id}/avatar`
                         }
                         sx={{
                           height: 100,

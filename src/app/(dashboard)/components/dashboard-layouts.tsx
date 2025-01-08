@@ -14,7 +14,7 @@ function DashboardLayout({ children }: { children: ReactNode }) {
   const theme = useTheme();
 
   return (
-    <CustomTheme colorPreset="purple">
+    <CustomTheme colorPreset="blue">
       <AuthProvider>
         <VerticalLayout navColor="blend-in">
           <TopLoader />

@@ -7,6 +7,7 @@ import {
   CardContent,
   CardHeader,
   Checkbox,
+  CircularProgress,
   FormControl,
   FormControlLabel,
   Grid2,
@@ -80,11 +81,13 @@ function RegularForm({ services }: { services: ServiceForFormType[] }) {
     initialState
   );
   const [message, setMessage] = useState("");
+  const [redirecting, setRedirecting] = useState(false);
 
   useEffect(() => {
     if (state) {
       if (state?.error) setMessage(state.error);
       if (state?.success) {
+        setRedirecting(true);
         router.push(
           `${adminPaths.dashboard.staff.pendingForms}?from={{staff-form}}`
         );
@@ -222,6 +225,12 @@ function RegularForm({ services }: { services: ServiceForFormType[] }) {
         <Typography color="error" variant="subtitle2">
           {message}
         </Typography>
+
+        {redirecting && (
+          <Stack justifyContent={"center"} direction={"row"}>
+            <CircularProgress />
+          </Stack>
+        )}
 
         <Stack direction={"row"} justifyContent={"flex-end"}>
           <SubmitButton title="Add form" isFullWidth={false} />

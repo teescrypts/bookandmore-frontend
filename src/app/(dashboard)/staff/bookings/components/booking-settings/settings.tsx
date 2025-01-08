@@ -51,7 +51,7 @@ const AppointmentBookingSettings: React.FC<PropType> = ({ settings }) => {
   if (!settings) {
     return (
       <EmptyState
-        message="You have not set up you Appointment settings"
+        message="You have not set up your appointment settings"
         actionLabel="Set up now"
         onActionClick={() =>
           router.push(staffPaths.dashboard.booking.settings.setUp)

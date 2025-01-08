@@ -14,11 +14,10 @@ import { Scrollbar } from "@/components/scrollbar";
 import Edit from "@/icons/untitled-ui/duocolor/edit";
 import Delete from "@/icons/untitled-ui/duocolor/delete";
 import Link from "next/link";
-import { API_BASE_URL, staffPaths } from "@/paths";
 import { Product } from "../../products/page";
 import { deleteProduct } from "@/app/actions/actions";
 import notify from "@/utils/toast";
-import { useRouter } from "next/navigation";
+import { staffPaths } from "@/paths";
 
 interface ProductListTableProps {
   count: number;
@@ -38,8 +37,6 @@ export const ProductListTable: React.FC<ProductListTableProps> = ({
   rowsPerPage = 0,
 }) => {
   const [message, setMessage] = useState("");
-  const router = useRouter()
-  
   const handleProductDelete = useCallback(async (id: string) => {
     const result = await deleteProduct(id);
 
@@ -80,7 +77,7 @@ export const ProductListTable: React.FC<ProductListTableProps> = ({
                 ? sizeBasedTotal()
                 : product.quantity;
 
-              const quantityColor = totalQty >= 10 ? "success" : "error";
+              const quantityColor = totalQty >= 5 ? "success" : "error";
 
               return (
                 <Fragment key={product._id}>
@@ -91,7 +88,7 @@ export const ProductListTable: React.FC<ProductListTableProps> = ({
                           sx={{
                             alignItems: "center",
                             backgroundColor: "neutral.50",
-                            backgroundImage: `url(${API_BASE_URL}/${product.images[0].url})`,
+                            backgroundImage: `url(${product.images[0].url})`,
                             backgroundPosition: "center",
                             backgroundSize: "cover",
                             borderRadius: 1,
@@ -121,7 +118,7 @@ export const ProductListTable: React.FC<ProductListTableProps> = ({
                         sx={{ height: 8, width: 36 }}
                       />
                       <Typography color="text.secondary" variant="body2">
-                        {totalQty} in stock
+                        {totalQty} of 100 in stock
                         {hasManySizes &&
                           ` in ${product.sizeBasedQuantity?.details?.length} sizes`}
                       </Typography>

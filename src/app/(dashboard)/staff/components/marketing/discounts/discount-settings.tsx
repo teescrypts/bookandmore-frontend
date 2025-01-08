@@ -67,6 +67,7 @@ const DiscountSettings: React.FC<PropType> = ({
           onClose={() => setShowCouponModal(false)}
           products={products}
           services={services}
+          coupons={coupons}
         />
       </ModalBox>
     </>
