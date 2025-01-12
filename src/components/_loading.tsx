@@ -1,6 +1,7 @@
-import { CircularProgress, Stack, Typography } from "@mui/material";
+import { CircularProgress, Stack, SvgIcon, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import CustomTheme from "./custom-theme";
+import ImpactLogo from "./impact-logo";
 
 export const SplashScreen = () => (
   <CustomTheme colorPreset="purple">
@@ -27,8 +28,10 @@ export const SplashScreen = () => (
           width: 48,
         }}
       >
-        <Stack direction={"row"} spacing={2}>
-          <Typography variant="h2">LOGO</Typography>
+        <Stack direction={"column"} spacing={2}>
+          <SvgIcon fontSize="large">
+            <ImpactLogo />
+          </SvgIcon>
           <CircularProgress color="primary" />
         </Stack>
       </Box>
