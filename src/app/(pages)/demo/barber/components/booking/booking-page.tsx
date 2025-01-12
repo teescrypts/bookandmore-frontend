@@ -88,6 +88,7 @@ const BookingPage = ({ locations }: { locations: BranchType[] }) => {
   const [selectedLocationName, setselectedLocationName] = useState<string>("");
   const [selectedLocationTz, setselectedLocationTz] = useState<string>("");
   const [selectedService, setSelectedService] = useState<string>("");
+  const [selectedServiceName, setSelectedServiceName] = useState<string>("");
   const [selectedStaff, setSelectedStaff] = useState<string>("");
   const [selectedDate, setSelectedDate] = useState<DateItem | null>(null);
   const [selectedSlot, setSlectedSlot] = useState("");
@@ -536,6 +537,7 @@ const BookingPage = ({ locations }: { locations: BranchType[] }) => {
                             size="small"
                             onClick={() => {
                               setSelectedService(service._id);
+                              setSelectedServiceName(service.name);
                               handleNext();
                             }}
                           >
@@ -812,7 +814,7 @@ const BookingPage = ({ locations }: { locations: BranchType[] }) => {
                       <ListItemText
                         primary={
                           <Typography variant="body1" fontWeight="bold">
-                            Adult Cut
+                            {selectedServiceName}
                           </Typography>
                         }
                         secondary={
