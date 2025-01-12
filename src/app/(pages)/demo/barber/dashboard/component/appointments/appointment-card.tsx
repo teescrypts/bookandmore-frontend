@@ -332,7 +332,6 @@ const AppointmentCard: React.FC<{ appointment: CustomerAppointmentType }> = ({
             sx={{
               mt: 4,
               p: 2,
-              backgroundColor: "#f4f6f8",
               borderRadius: 2,
               border: "1px solid #e0e0e0",
             }}

@@ -7,9 +7,6 @@ function HomeIntro() {
   return (
     <Box
       sx={{
-        py: 8,
-        px: 3,
-        backgroundColor: "#f5f5f5",
         textAlign: "center",
       }}
     >

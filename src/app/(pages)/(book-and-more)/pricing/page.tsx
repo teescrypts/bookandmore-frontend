@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../components/banner";
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import PricingSection from "../components/pricing/pricing-section";
 import HowItWorks from "../components/home-contents/home-how-it-works";
 

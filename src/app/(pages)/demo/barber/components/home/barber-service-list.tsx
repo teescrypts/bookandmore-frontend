@@ -37,9 +37,6 @@ const BarberServicesList: React.FC = () => {
   return (
     <Box
       sx={{
-        py: 8,
-        px: 3,
-        backgroundColor: "#f5f5f5",
         textAlign: "center",
       }}
     >
@@ -69,7 +66,6 @@ const BarberServicesList: React.FC = () => {
             sx={{
               maxWidth: 400,
               margin: "0 auto",
-              backgroundColor: "#fff",
               borderRadius: 2,
               boxShadow: 2,
             }}

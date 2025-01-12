@@ -134,7 +134,7 @@ const HomeHero = () => {
             />
           </Box>
 
-          <Stack direction="row" spacing={2} justifyContent="center">
+          <Stack direction="column" spacing={2} justifyContent="center">
             <Link href={"/demo/barber"}>
               <Button variant="contained" size="large">
                 Try Customer Demo

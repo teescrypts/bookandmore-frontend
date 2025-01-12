@@ -661,6 +661,10 @@ export async function login(
         redirect("/admin/home");
         break;
 
+      case "customer":
+        redirect("/demo/barber/dashboard/profile");
+        break;
+
       default:
         break;
     }
